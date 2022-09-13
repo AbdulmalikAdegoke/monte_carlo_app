@@ -1,21 +1,244 @@
+body{
 
+}
+html{
+  height: 100%;
+  /* position: absolute; */
+}
+/* general- multi component styles */
+.register_a, .forgot_p_a, .login_a{
+  color: #0500FF;
+}
+
+.log_in_page,.forgotten_password_page,.registration_page{
+  width: 100%;
+  background-color: #0500FF;
+}
+.login_a,.register_a{
+  color: #0500FF;
+}
+.register_a:hover, .forgot_p_a:hover, .login_a:hover{
+  cursor: pointer;
+}
+.stock_img{
+
+}
+
+/* Font */
+.loginpage_div h1,.forgotten_p_div h1{
+  color: white;
+  font-weight: bold;
+  /* top: 60px; */
+  /* position: absolute;
+  z-index: 1; */
+}
+h1{
+
+
+}
+h2{
+
+}
+p{
+
+}
 
 /* LogIn */
-
+.log_in_page,.forgotten_password_page{
+  position: absolute;
+  z-index: -2;
+  height: 100%;
+}
+.loginpage_div{
+  background-color: #0500FF;
+  padding: 20px;
+  position: absolute;
+  z-index: -1;
+  /* width: 100%; */
+  /* height: 100%; */
+  visibility:hidden;
+}
 .logo{
 
 }
-.login_form_container{
-  width: 80%;
-  height: 100vh;
+.login_form_container,.forgottenp_form_container{
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+  margin: 0 auto;
+  width: 90%;
+  min-height: 100vh;
+  background-color: white;
+  padding: 100px;
+}
+.loginform_div{
+
+}
+.loginform_div.stock_img{
+
+}
+.no_account_msg,.forgotten_p_login{
+  text-align: center;
+}
+@media only screen and (min-width: 970px) {
+  .loginform_div{
+    display: none;
+  }
+  .loginpage_div,.forgotten_p_div{
+    width: 55%;
+    float: left;
+    padding: 20px;
+    padding-right: 0;
+    height: 100%;
+    visibility:visible;
+  }
+  .login_page,.forgotten_password_page{
+    width: 100%;
+    padding: 0;
+    /* padding: 100px; */
+  }
+  .login_page h1{
+    color: white;
+    font-weight: bold;
+    /* top: 60px; */
+  }
+  .login_form_container,.forgottenp_form_container{
+    background-color: white;
+    width: 45%;
+    float: right;
+    padding: 10%;
+    height: 100%;
+  }
+
+  img.stock_img{
+    width:85%;
+    height:85%;
+    top: 50%;
+    bottom: 50%;
+    float:right;
+    border-top-left-radius: 2%;
+    border-bottom-left-radius: 2%;
+  }
+}
+
+/* Forgotten Password */
+.forgotten_password_page{
+
+}
+.forgotten_p_div{
+
+}
+.forgottenp_form_container{
+
+}
+.forgottenp_div{
+
 }
 @media only screen and (max-width: 970px) {
   
 }
-@media only screen and (min-width: 970px) {
-  .login_form_container{
-    width: 50%;
-    float: right;
-    height: 100vh;
+/* Register */
+.registration_page{
+
+}
+.registration_form_container{
+
+}
+.registration_form{
+
+}
+.registrationpage_div{
+
+}
+.registration_page{
+  /* position: absolute;
+  z-index: -2; */
+  width: 100%;
+  height: 100vh;
+  /* background-color: #0500FF; */
+  /* padding: 50px; */
+}
+
+.registration_form_container{
+  width: 65%;
+  height: 100vh;
+  /* margin: 0 auto; */
+  /* float: right; */
+  background-color: white;
+  padding: 100px;
+  float: left;
+}
+.registration_form_container p{
+  text-align: center;
+}
+.registration_form{
+  width: 55%;
+}
+.registration_form h1{
+  color: #0500FF;
+  font-weight: bold;
+}
+.registration_form h2{
+  font-weight: bold;
+}
+.registrationpage_div{
+  width: 35%;
+  background-color: #0500FF;
+  position: relative;
+}
+.registrationpage_div .stock_img{
+  position: absolute;
+  left: 0%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+}
+.registration_confirmation_p{
+  color: green;
+
+}
+@media only screen and (max-width: 970px) {
+  .registrationpage_div.stock_img{
+
   }
+  
+}
+/* Change Password */
+.change_password_page{
+
+}
+.changepasswordpage_div{
+
+}
+.changepassword_form_container{
+
+}
+.changepasswordform_div{
+  
+}
+.changepasswordform_div.stock_img{
+
+}
+@media only screen and (max-width: 970px) {
+  
+}
+/* Dashboard */
+.dashboard{
+
+}
+@media only screen and (max-width: 970px) {
+  
+}
+/* History */
+.history{
+
+}
+@media only screen and (max-width: 970px) {
+  
+}
+/* Profile */
+.profile{
+
+}
+@media only screen and (max-width: 970px) {
+  
 }

@@ -1,0 +1,14 @@
+/* Profile Page styles */
+
+.profile_image{
+  text-align: center;
+}
+button.edit_profile_button{
+  width: 15%;
+}
+.footer{
+  width: 70%;
+  /* display: inline-block; */
+  position: absolute;
+  bottom: 5%;
+}

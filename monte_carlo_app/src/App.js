@@ -3,21 +3,33 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 
 import './App.css';
 
-import LogIn from './Pages/LogIn';
+// entry point
+import { LogIn, Registration, ForgottenPassword, ChangePassword, Dashboard, History, Profile, Error } from './Pages';
 
-function App() {
+import { BaseLayout } from './Components/Common';
 
+export default function App() {
 
   return (
-    <div className="App">
-      <BrowserRouter>
+    // userProfile={currentlyLoggedInUser}
+    // toggleLogInState={toggleLogInState} 
+    <div className="bodyContainer">
+        <BrowserRouter>
             <Routes>
-                
-              <Route path="/login" element={<LogIn/>} />
+              <Route path="/forgottenPassword" element={<ForgottenPassword/>} />
+              <Route path="/registration" element={<Registration/>} />
+              <Route path="/" element={<LogIn />} />
+              
+              <Route path="/" element={<BaseLayout />}>
+                <Route path="*" element={<Error />} />
+                <Route path="profile" element={<Profile />} />
+                <Route path="history" element={<History />} />
+                <Route path="dashboard" element={<Dashboard />} />
+              </Route>
+
+              
             </Routes>
         </BrowserRouter>
     </div>
-  );
+  )
 }
-
-export default App;

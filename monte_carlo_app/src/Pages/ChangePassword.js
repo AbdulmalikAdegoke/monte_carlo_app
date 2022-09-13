@@ -2,14 +2,14 @@ import React from 'react'
 
 import { Link } from 'react-router-dom'
 
-import { LogInForm } from '../Components/Authentication'
+import { ChangePasswordForm } from '../Components/Authentication'
 
 import './../App.css'
 
-export default function LogIn() {
+export default function ChangePassword() {
   return (
-    <div className='log_in_page'>
-      <div className='loginpage_div'>
+    <div className='change_password_page'>
+      <div className='changepasswordpage_div'>
         <h1>
           MCS
         </h1>
@@ -17,40 +17,38 @@ export default function LogIn() {
         <img className='stock_img' src={require('./../Assets/stock/template.png')} alt='Stock'  />
       </div>
 
-      <div className='login_form_container'>
-        {/* <div className='loginform_div'>
+      <div className='changepassword_form_container'>
+        <div className='changepasswordform_div'>
           <h1>
             MCS
           </h1>
 
           <img className='stock_img' src={require('./../Assets/stock/template.png')} alt='Stock'  />
-        </div> */}
+        </div>
 
         <h2>
-          LogIn
+          Change Password
         </h2>
         <p>
-          Enter your login details here
+          Change your password here
         </p>
 
-        <LogInForm />
+        <ChangePasswordForm />
 
-        <br />
-
-        <p className='no_account_msg'>
-          Don't have an account? {' '}
+        <p>
           <Link
-            className='register_a'
-            to='/registration'
+            className='login_a'
+            to='/'
           >
-            Register
+            LogIn
           </Link>
         </p>
-
-
       </div>
       
       
     </div>
+    // <div>ChangePassword
+        
+    // </div>
   )
 }
