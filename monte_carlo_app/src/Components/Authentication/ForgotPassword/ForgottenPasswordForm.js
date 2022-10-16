@@ -1,6 +1,7 @@
 import React from 'react'
 
-import { Label, Input, Button } from 'reactstrap'
+import { Formik, Form } from 'formik';
+import { forgottenPasswordFormValidation,FormInput,SubmitButton } from '../../Common';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './../style.css'
@@ -10,29 +11,27 @@ export default function ForgottenPasswordForm() {
   
   return (
     <div className='forgottenPasswordForm'>
-      <Label
-        for='emailAddress'
-        size='lg'
+      <Formik
+        initialValues={{emailAddress:"",password:""}}
+        validationSchema={forgottenPasswordFormValidation}
       >
-        Email Address
-      </Label>
-      <Input 
-        id='emailAddress'
-        type='email'
-        bsSize='lg'
-        placeholder='Type your email address here'
-      />
+        <Form>
+          <FormInput 
+            inputLabel="Email Address"
+            id="emailAddress"
+            name="emailAddress"
+            type='email'
+            placeholder='Type your email address here'
+          />
 
-      <br/>
+          <br/>
 
-      <Button
-        color='primary'
-        size='lg'
-        type='submit'
-      >
-        Request Password Change
-      </Button>
-        
+          <SubmitButton
+            buttonLabel='Request Password Change'
+          />
+
+        </Form>
+      </Formik>
     </div>
   )
 }

@@ -1,6 +1,7 @@
 import React from 'react'
 
-import { Label, Input } from 'reactstrap'
+import { Formik, Form } from 'formik';
+import { changePasswordFormValidation,FormInput,SubmitButton } from '../../Common';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './../style.css'
@@ -10,41 +11,34 @@ export default function ChangePasswordForm() {
   
     return (
         <div className='changePasswordForm'>
-            <Label
-                for='newPassword'
-                size='lg'
+            <Formik
+                initialValues={{newPassword:"",retypedPassword:""}}
+                validationSchema={changePasswordFormValidation}
             >
-                New Password
-            </Label>
-            <Input 
-                id='newPassword'
-                type='password'
-                bsSize='lg'
-                placeholder='Type your new password here'
-            />
+                <Form>
+                    <FormInput 
+                        inputLabel="New Password"
+                        id="newPassword"
+                        name="newPassword"
+                        type='password'
+                        placeholder='Type your new password here'
+                    />
 
-            <br/>
+                    <FormInput 
+                        inputLabel="Confirm New Password"
+                        id="retypedPassword"
+                        name="retypedPassword"
+                        type='password'
+                        placeholder='Confirm Your Password'
+                    />
 
-            <Label
-                for='retypedPassword'
-                size='lg'
-            >
-                Re-Type New Password
-            </Label>
-            <Input 
-                id='retypedPassword'
-                type='password'
-                bsSize='lg'
-                placeholder='Re-Type your new password here'
-            />
+                    <br/>
 
-            <br/>
-
-            <button
-                type='submit'
-            >
-                Change Password
-            </button>
+                    <SubmitButton
+                        buttonLabel='Change Password'
+                    />
+                </Form>
+            </Formik>            
         </div>
     )
 }

@@ -1,8 +1,7 @@
 import React from 'react'
 
-import { Link } from 'react-router-dom'
-
 import { LogInForm } from '../Components/Authentication'
+import { PageLink } from '../Components/Common'
 
 import './../App.css'
 
@@ -18,13 +17,11 @@ export default function LogIn() {
       </div>
 
       <div className='login_form_container'>
-        {/* <div className='loginform_div'>
+        <div className='loginform_div'>
           <h1>
             MCS
           </h1>
-
-          <img className='stock_img' src={require('./../Assets/stock/template.png')} alt='Stock'  />
-        </div> */}
+        </div>
 
         <h2>
           LogIn
@@ -38,13 +35,11 @@ export default function LogIn() {
         <br />
 
         <p className='no_account_msg'>
-          Don't have an account? {' '}
-          <Link
-            className='register_a'
-            to='/registration'
-          >
-            Register
-          </Link>
+          Don't have an account?: {' '}
+          <PageLink
+            pageHref='/registration'
+            linkLabel='Register'
+          />
         </p>
 
 

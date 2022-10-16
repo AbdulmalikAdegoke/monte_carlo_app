@@ -2,10 +2,10 @@ import React, {useState} from 'react'
 
 import { Button,Modal,ModalHeader,ModalBody } from 'reactstrap'
 
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './../style.css'
 
-export default function ConfirmationModal({openState,headerTitle,confirmationAction,confirmationMsgBtnColour,actionMessage,closeModal}) {
-  const [modalIsOpen,setModalIsOpen] = useState(false);
+export const ConfirmationModal = ({openState,headerTitle,confirmationAction,confirmationMsgBtnColour,actionMessage,closeModal}) => {
   
   return (
     <div>

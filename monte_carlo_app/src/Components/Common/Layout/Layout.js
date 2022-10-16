@@ -1,18 +1,51 @@
 import React, { useState } from 'react'
 import { Outlet, useLocation } from "react-router-dom"
-// import { v4 as uuidv4 } from 'uuid'
-import { Nav, NavLink, Button, NavItem, Modal, ModalBody,ModalFooter, ModalHeader, Input } from 'reactstrap'; // reactstrap module imports { Button, Input, InputGroup, InputGroupText, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap'; // reactstrap module imports
-// import 'bootstrap/dist/css/bootstrap.min.css';
+import { Nav, NavLink, Button, NavItem } from 'reactstrap'; // reactstrap module imports { Button, Input, InputGroup, InputGroupText, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap'; // reactstrap module imports
 
-export default function BaseLayout({ toggleLogInState, userProfile }) {
+import { ConfirmationModal } from '../Modal/ConfirmationModal';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './../style.css'
+
+export default function BaseLayout({ toggleLogInState, logOutConfirmation, userProfile }) {
+    // usestate hook for the  (variable and the setting function)
+    const [loggedIn, setLoggedIn] = useState(true)
     const [wantsToLogOut,setWantsToLogOut] = useState(false)
-    function logoutHandler(e){
-        toggleLogInState()
+
+    const [currentlyLoggedInUser, setCurrentlyLoggedInUser] = useState({
+        email:"",
+        phoneNumber:"",
+        password:"",
+        firstName:"",
+        lastName:"",
+        profileImageSrc:"",
+        savedProjects:[{
+          projectTitle:"",
+          projectDescription:"",
+          tasks:[{
+            taskName:"",
+            timeTo:0,
+            estTp:0,
+            monthTm:0,
+            risk:[""]
+          }]
+        }]
+    })
+
+    // the function for toggling the list tasks as complete or incomplete
+    function toggleLogInState() {
+        const logInState = !loggedIn
+        setLoggedIn(logInState)
+
+        const userLogInReset = {emailaddress:"",password:"",phoneNum:""}
+
+        if(loggedIn === false) {
+        setCurrentlyLoggedInUser(userLogInReset)
+        }
     }
 
-    function logOutConfirmation() {
-        const logOut = !wantsToLogOut
-        setWantsToLogOut(logOut)
+    function logoutHandler(e){
+        toggleLogInState()
     }
 
     const currentHref = useLocation();
@@ -59,7 +92,10 @@ export default function BaseLayout({ toggleLogInState, userProfile }) {
 
             {' '}
 
-            <Button onClick={logOutConfirmation} className='logOutButton' >
+            <Button 
+                onClick={logOutConfirmation} 
+                className='logOutButton' 
+            >
                 <img src={require('./../../../Assets/icons/logout_icon_.png')}  alt='Logout stock' style={{width:"30px"}} />
                 <br />
                 Logout
@@ -76,7 +112,15 @@ export default function BaseLayout({ toggleLogInState, userProfile }) {
 
             <Outlet />
         </div>
-        
+
+        <ConfirmationModal
+            openState={wantsToLogOut}
+            headerTitle='Log Out Confirmation'
+            confirmationAction={logoutHandler}
+            confirmationMsgBtnColour="danger"
+            actionMessage='Log Out'
+            closeModal={logOutConfirmation}
+        />
         
     </div>
   )

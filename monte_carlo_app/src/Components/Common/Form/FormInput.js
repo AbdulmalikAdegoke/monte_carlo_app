@@ -1,30 +1,48 @@
 import React, {useState} from 'react'
 
-import { Input, Label, FormGroup } from 'reactstrap'
+import { Input, Label, FormGroup, FormFeedback } from 'reactstrap'
 
-export default function FormInput({inputLabel,inputId,inputName,inputType,inputPlaceholder}) {
+import { useField, ErrorMessage } from 'formik';
 
-    const [inputValue,setInputValue]= useState('');
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './../style.css'
 
-    function changeHandler(e) {
-        setInputValue(e.target.value)
-    }
+export const FormInput = ({inputLabel,...formProps}) => {
+
+    // const [inputValue,setInputValue]= useState('');
+
+    // function changeHandler(e) {
+    //     setInputValue(e.target.value)
+    // }
+
+    const [field,meta] = useField(formProps)
 
   return (
     <FormGroup>
-        <Label
-            for={inputId}
-        >
-            {inputLabel}
-        </Label>
+        {
+            inputLabel!==""&&
+            <Label
+                size="lg"
+                for={field.id}
+            >
+                {inputLabel}
+            </Label>
+        }
+        
         <Input
-            id={inputId}
-            type={inputType}
-            value={inputValue}
-            name={inputName}
-            onChange={changeHandler}
-            placeholder={inputPlaceholder}
+          bsSize="lg"
+          {...field}{...formProps}
+          invalid={meta.touched && Boolean(meta.error)} 
+          // valid={meta.touched && meta.error===undefined}
         />
-    </FormGroup>
+        <div
+            className="errorMsg"
+        >
+            <ErrorMessage  
+                name={field.name} 
+            />
+        </div>
+        
+      </FormGroup>
   )
 }

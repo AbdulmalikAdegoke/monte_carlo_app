@@ -1,68 +1,55 @@
 import React from 'react'
+import { Button } from 'reactstrap'
 
-import { Label, Input,Button } from 'reactstrap'
+import { useField } from 'formik'
+import { Formik, Form } from 'formik';
+import { registrationFormValidation,FormInput,SubmitButton } from '../../Common';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './../style.css'
 
 export default function RegistrationForm() {
-  
+  // const [field,meta] = useField(formProps)
   
   return (
     <div className='registrationForm'>
-      <Label
-        for='emailAddress'
-        size='lg'
+      <Formik
+        initialValues={{emailAddress:"",phoneNumber:"",password:""}}
+        validationSchema={registrationFormValidation}
       >
-        Email Address
-      </Label>
-      <Input 
-        id='emailAddress'
-        type='email'
-        bsSize='lg'
-        placeholder='Type your email address here'
-      />
+        <Form>
+          <FormInput 
+            inputLabel="Email Address"
+            id="emailAddress"
+            name="emailAddress"
+            type='email'
+            placeholder='Type your email address here'
+          />
 
-      <br/>
+          <FormInput 
+            inputLabel="Phone Number"
+            id="phoneNumber"
+            name="phoneNumber"
+            type='tel'
+            placeholder='Type your phone number here'
+          />
 
-      <Label
-        for='phoneNumber'
-        size='lg'
-      >
-        Phone Number
-      </Label>
-      <Input 
-        id='phoneNumber'
-        type='tel'
-        bsSize='lg'
-        placeholder='Type your phone number here'
-      />
+          <FormInput 
+            inputLabel="Password"
+            id="password"
+            name="password"
+            type='password'
+            placeholder='Type your password here'
+          />
 
-      <br/>
+          <br />
 
-      <Label
-        for='password'
-        size='lg'
-      >
-        Password
-      </Label>
-      <Input 
-        id='password'
-        type='password'
-        bsSize='lg'
-        placeholder='Type your password here'
-      />
+          <SubmitButton
+            buttonLabel='Register'
+          />
 
-      <br />
-
-      <Button
-        color='primary'
-        size='lg'
-        type='submit'
-      >
-        Register
-      </Button>
-        
+        </Form>
+      </Formik>        
     </div>
   )
 }

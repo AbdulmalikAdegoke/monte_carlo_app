@@ -1,8 +1,7 @@
 import React from 'react'
 
-import { Link } from 'react-router-dom'
-
 import { ChangePasswordForm } from '../Components/Authentication'
+import { PageLink } from '../Components/Common'
 
 import './../App.css'
 
@@ -36,19 +35,12 @@ export default function ChangePassword() {
         <ChangePasswordForm />
 
         <p>
-          <Link
-            className='login_a'
-            to='/'
-          >
-            LogIn
-          </Link>
+          <PageLink
+            pageHref='/'
+            linkLabel='LogIn'
+          />
         </p>
       </div>
-      
-      
     </div>
-    // <div>ChangePassword
-        
-    // </div>
   )
 }

@@ -1,8 +1,7 @@
 import React from 'react'
 
-import { Link } from 'react-router-dom'
-
 import { RegistrationForm } from '../Components/Authentication'
+import { PageLink } from '../Components/Common'
 
 import './../App.css'
 
@@ -26,20 +25,18 @@ export default function Registration() {
           <br/>
                 
           <p>
-            Already have an account? {' '}
-            <Link 
-              className='login_a' 
-              to='/'
-            >
-              LogIn
-            </Link>
+            Already have an account?: {' '}
+            <PageLink
+              pageHref='/'
+              linkLabel='LogIn'
+            />
           </p>
         </div>      
       </div>
 
-      {/* <div className='registrationpage_div'>
+      <div className='registrationpage_div'>
         <img className='stock_img' src={require('./../Assets/stock/template.png')} alt='Stock' style={{height:"600px",top:"50%",bottom: "50%",float:"right"}} />
-      </div> */}
+      </div>
 
     </div>
   )

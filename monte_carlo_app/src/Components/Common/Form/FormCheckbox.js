@@ -1,13 +1,23 @@
 import React from 'react'
 
-import { Input, FormGroup } from 'reactstrap'
+import { Input, Label, FormGroup } from 'reactstrap'
 
-export default function FormCheckbox() {
+import { useField } from 'formik';
+
+export default function FormCheckbox({checkboxLabel,...formProps}) {
+  const [field,meta] = useField(formProps)
+
   return (
     <FormGroup>
-        <Input 
-            type="checkbox" 
-        />
+      <Input 
+        {...field}{...formProps}
+      /> 
+      {' '}
+      <Label 
+        for={field.id}
+      >
+        {checkboxLabel}
+      </Label>
     </FormGroup>
   )
 }

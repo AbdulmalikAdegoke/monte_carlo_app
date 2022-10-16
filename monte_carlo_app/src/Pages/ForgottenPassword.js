@@ -3,6 +3,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 import { ForgottenPasswordForm } from '../Components/Authentication'
+import { PageLink } from '../Components/Common'
 
 import './../App.css'
 
@@ -18,13 +19,11 @@ export default function ForgottenPassword() {
       </div>
 
       <div className='forgottenp_form_container'>
-        {/* <div className='forgottenp_div'>
+        <div className='forgottenp_div'>
           <h1>
             MCS
           </h1>
-
-          <img className='stock_img' src={require('./../Assets/stock/template.png')} alt='Stock'  />
-        </div> */}
+        </div>
 
         <h2>
           Forgotten Password
@@ -38,13 +37,11 @@ export default function ForgottenPassword() {
         <br />
 
         <p className='forgotten_p_login'>
-          Want to login: {' '}
-          <Link
-            className='login_a'
-            to='/'
-          >
-            Login
-          </Link>
+          Want to login?: {' '}
+          <PageLink
+            pageHref='/'
+            linkLabel='Log In'
+          />
         </p>
 
 
