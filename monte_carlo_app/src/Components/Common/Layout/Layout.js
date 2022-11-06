@@ -7,42 +7,7 @@ import { ConfirmationModal } from '../Modal/ConfirmationModal';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './../style.css'
 
-export default function BaseLayout({ toggleLogInState, logOutConfirmation, userProfile }) {
-    // usestate hook for the  (variable and the setting function)
-    const [loggedIn, setLoggedIn] = useState(true)
-    const [wantsToLogOut,setWantsToLogOut] = useState(false)
-
-    const [currentlyLoggedInUser, setCurrentlyLoggedInUser] = useState({
-        email:"",
-        phoneNumber:"",
-        password:"",
-        firstName:"",
-        lastName:"",
-        profileImageSrc:"",
-        savedProjects:[{
-          projectTitle:"",
-          projectDescription:"",
-          tasks:[{
-            taskName:"",
-            timeTo:0,
-            estTp:0,
-            monthTm:0,
-            risk:[""]
-          }]
-        }]
-    })
-
-    // the function for toggling the list tasks as complete or incomplete
-    function toggleLogInState() {
-        const logInState = !loggedIn
-        setLoggedIn(logInState)
-
-        const userLogInReset = {emailaddress:"",password:"",phoneNum:""}
-
-        if(loggedIn === false) {
-        setCurrentlyLoggedInUser(userLogInReset)
-        }
-    }
+export default function BaseLayout({ toggleLogInState, logOutConfirmation, wantsToLogOut,userProfile }) {
 
     function logoutHandler(e){
         toggleLogInState()

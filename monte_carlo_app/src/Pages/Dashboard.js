@@ -6,7 +6,7 @@ import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
 
-import { Formik } from 'formik';
+import { Formik, Form } from 'formik';
 
 import { dashboardFormsValidation } from '../Components/Common';
 import { ConfirmationModal } from '../Components/Common';
@@ -96,37 +96,39 @@ export default function Dashboard() {
           }}
           validationSchema={dashboardFormsValidation}
         >
-          {/* the multi level forms */}
-          {currentForm(activeStep)}  
-          
-          <div className='footer'>
-            <Button
-              color={activeStep===0?'primary':activeStep===1?'secondary':activeStep===2?"secondary" :"danger"} 
-              size='lg'  
-              outline={activeStep===1?true:false}
-              // {activeStep===1?onClick={}:onClick={}}
-              // onClick={activeStep===1?{generateOutput}: {setactiveStep((currPg) => currPg+1)}}
-              onClick={activeStep===0?()=>{setActiveStep(activeStep+1)}:activeStep===1 || activeStep===2?()=>{setActiveStep(activeStep-1)}:resetFormConfirmation}
-              style={{width:"20%"}}
-              disabled={activeStep===0? (formData.projectTitle==="" || formData.projectDescription===""?true:false) :activeStep===1? false:false}
-            >
-              {activeStep===0?"Next":activeStep===1 || activeStep===2? "Previous": "Cancel"}
-            </Button>
-            {' '}
-            {activeStep>0 &&
+          <Form>
+            {/* the multi level forms */}
+            {currentForm(activeStep)}  
+            
+            <div className='footer'>
               <Button
-                color="primary"
-                size='lg' 
-                className='login_button' 
-                onClick={activeStep===1?()=>{setActiveStep(activeStep+1)}:activeStep===2?()=>{setActiveStep(activeStep+1)}:resetFormConfirmation}
-                style={{width:"20%",marginLeft:"5px"}}
-                // onClick={previousStep}
-                disabled={activeStep===1? (formData.tasks.length===0?true:false):false}
+                color={activeStep===0?'primary':activeStep===1?'secondary':activeStep===2?"secondary" :"danger"} 
+                size='lg'  
+                outline={activeStep===1?true:false}
+                // {activeStep===1?onClick={}:onClick={}}
+                // onClick={activeStep===1?{generateOutput}: {setactiveStep((currPg) => currPg+1)}}
+                onClick={activeStep===0?()=>{setActiveStep(activeStep+1)}:activeStep===1 || activeStep===2?()=>{setActiveStep(activeStep-1)}:resetFormConfirmation}
+                style={{width:"20%"}}
+                disabled={activeStep===0? (formData.projectTitle==="" || formData.projectDescription===""?true:false) :activeStep===1? false:false}
               >
-                {activeStep===1?"Next":activeStep===2? "Submit":"Save"}
+                {activeStep===0?"Next":activeStep===1 || activeStep===2? "Previous": "Cancel"}
               </Button>
-            }
-          </div>
+              {' '}
+              {activeStep>0 &&
+                <Button
+                  color="primary"
+                  size='lg' 
+                  className='login_button' 
+                  onClick={activeStep===1?()=>{setActiveStep(activeStep+1)}:activeStep===2?()=>{setActiveStep(activeStep+1)}:resetFormConfirmation}
+                  style={{width:"20%",marginLeft:"5px"}}
+                  // onClick={previousStep}
+                  disabled={activeStep===1? (formData.tasks.length===0?true:false):false}
+                >
+                  {activeStep===1?"Next":activeStep===2? "Submit":"Save"}
+                </Button>
+              }
+            </div>
+          </Form>
         </Formik>
       )}
 

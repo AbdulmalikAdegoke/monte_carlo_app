@@ -89,23 +89,23 @@ export const projectFormValidation = Yup.object({
 // for fields (input fields)
 export const projectTaskFormValidation = Yup.object({
     
-    taskName: Yup.string()
+  taskName: Yup.string()
     .min(5, 'Must be at least 5 characters')
     .required('Required'),
 
-    minTime: Yup.number()
+  minTime: Yup.number()
     .moreThan(0, 'Must be > (greater than) 0')
     .required('Required'),
 
-    pessTime: Yup.number()
+  pessTime: Yup.number()
     .moreThan(0, 'Must be > (greater than) 0')
     .required('Required'),
 
-    maxTime: Yup.number()
+  maxTime: Yup.number()
     .moreThan(0, 'Must be > (greater than) 0')
     .required('Required'),
 
-    risks: Yup.string()
+  risks: Yup.string()
     .min(2, 'Must be at least 2 characters'),
 })
 
@@ -149,22 +149,22 @@ export const dashboardFormsValidation = Yup.object({
     .required('Required'),
 
   taskName: Yup.string()
-  .min(5, 'Must be at least 5 characters')
-  .required('Required'),
+    .min(5, 'Must be at least 5 characters')
+    .required('Required'),
 
   minTime: Yup.number()
-  .moreThan(0, 'Must be > (greater than) 0')
-  .required('Required'),
+    .moreThan(0, 'Must be > (greater than) 0')
+    .required('Required'),
 
   pessTime: Yup.number()
-  .moreThan(0, 'Must be > (greater than) 0')
-  .required('Required'),
+    .moreThan(0, 'Must be > (greater than) 0')
+    .required('Required'),
 
   maxTime: Yup.number()
-  .moreThan(0, 'Must be > (greater than) 0')
-  .required('Required'),
+    .moreThan(0, 'Must be > (greater than) 0')
+    .required('Required'),
 
   risks: Yup.string()
-  .min(2, 'Must be at least 2 characters'),
+    .min(2, 'Must be at least 2 characters'),
 
 })

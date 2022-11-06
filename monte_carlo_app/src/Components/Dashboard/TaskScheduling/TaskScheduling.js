@@ -14,10 +14,10 @@ import { Empty } from 'antd';
 export default function TaskScheduling({ formData, setFormData, tasks, setTasks, risks, setRisks }) {
   const [addTask,setAddTask] = useState(false)
 
-  const tNameRef= useRef()
-  const oTimeRef= useRef()
-  const pTimeRef= useRef()
-  const mTimeRef= useRef()
+  const tNameRef= useRef("")
+  const oTimeRef= useRef(0)
+  const pTimeRef= useRef(0)
+  const mTimeRef= useRef(0)
 
   function addTaskConfirmation() {
     const add = !addTask
@@ -128,65 +128,71 @@ export default function TaskScheduling({ formData, setFormData, tasks, setTasks,
       </Button>
 
       <br />
-        <br />
-        {/* conditional rendering */}
-        {formData.tasks.length === 0?
-            // <p>Not Here</p>
-            <Empty />
-            :
-            <Table
-              bordered
-              hover
-              responsive
-            >
-              <thead>
-                <tr>
-                  <th>
-                    Task Name
-                  </th>
-                  <th>
-                    Time 
-                    <br/>
-                    to
-                  </th>
-                  <th>
-                    Est. 
-                    <br/>
-                    tp
-                  </th>
-                  <th>
-                    (Month) 
-                    <br/>
-                    tm
-                  </th>
-                  <th>
-                    Risks
-                  </th>
-                  <th>
-                    Action
-                  </th>
-                </tr>
-              </thead>
+      <br />
+      
+      {/* conditional rendering */}
+      {formData.tasks.length === 0?
+        // <p>Not Here</p>
+        <Empty />
+        :
+        <Table
+          bordered
+          hover
+          responsive
+        >
+          <thead>
+            <tr>
+              <th>
+                Task Name
+              </th>
+              <th>
+                Time 
+                <br/>
+                to
+              </th>
+              <th>
+                Est. 
+                <br/>
+                tp
+              </th>
+              <th>
+                (Month) 
+                <br/>
+                tm
+              </th>
+              <th>
+                Risks
+              </th>
+              <th>
+                Action
+              </th>
+            </tr>
+          </thead>
 
-              <tbody>
-                {/* conditional rendering of the  */}
-                {formData.tasks.map((task,id) => {
-                    return <ProjectTasks key={id} index={id} tasks={task} toggleEditTask={toggleEditTask} 
+          <tbody>
+            {/* conditional rendering of the  */}
+            {formData.tasks.map((task,id) => {
+              return <ProjectTasks key={id} index={id} tasks={task} toggleEditTask={toggleEditTask} 
                         addRiskHandler={addRiskHandler} deleteRiskHandler={deleteRiskHandler} 
                         inputFieldChangeHandler={inputFieldChangeHandler} toggleDeleteTask={deleteTaskHandler} 
                         toggleSaveEdit={toggleSaveEdit} editHandlerAddTask={editHandlerAddTask} 
                         editHandlerDeleteRisk={editHandlerDeleteRisk} setEmptyRisk={setEmptyRisk} 
                         addEmptyRisk={addEmptyRisk} 
                         // temporaryRisk={temporaryRisk} 
-                        />
-                    })}
-                </tbody>
-            </Table>
-        }
-
+                      />
+                }
+              )
+            }
+          </tbody>
+        </Table>
+      }
 
       <AddTaskModal 
-      formData={formData} setFormData={setFormData} risks={risks} setRisks={setRisks}/>
+        formData={formData} setFormData={setFormData} risks={risks} setRisks={setRisks}
+        addTask={addTask} setAddTask={setAddTask} addTaskConfirmation={addTaskConfirmation}
+        setEmptyRisk={setEmptyRisk} inputFieldChangeHandler={inputFieldChangeHandler}
+        addRiskHandler={addRiskHandler} deleteRiskHandler={deleteRiskHandler}
+      />
 
     </div>
   )

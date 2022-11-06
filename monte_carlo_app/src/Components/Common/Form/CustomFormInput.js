@@ -1,20 +1,12 @@
-import React, {useState} from 'react'
+import React from 'react'
 
-import { Input, Label, FormGroup, FormFeedback } from 'reactstrap'
-
-import { useField, ErrorMessage } from 'formik';
+import { FormGroup, Input, Label, ErrorMessage } from 'reactstrap'
+import { useField } from 'formik'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './../style.css'
 
-export const FormInput = ({inputLabel,...formProps}) => {
-
-    // const [inputValue,setInputValue]= useState('');
-
-    // function changeHandler(e) {
-    //     setInputValue(e.target.value)
-    // }
-
+export default function CustomFormInput({ inputLabel, ...formProps }) {
     const [field,meta] = useField(formProps)
 
   return (

@@ -63,50 +63,52 @@ export default function ProjectTasks({ index, tasks, toggleEditTask,
 
 
   return (
-    <tr>
-        <td>
-            {tasks.taskName}
-        </td>
+    <>
+        <tr>
+            <td>
+                {tasks.taskName}
+            </td>
 
-        <td>
-            {tasks.optTime}
-        </td>
+            <td>
+                {tasks.optTime}
+            </td>
 
-        <td>
-            {tasks.pesTime}
-        </td>
+            <td>
+                {tasks.pesTime}
+            </td>
 
-        <td>
-            {tasks.maxTime}
-        </td>
+            <td>
+                {tasks.maxTime}
+            </td>
 
-        <td>
-            {/* conditional rendering of the  */}
-            {projectRisks.map((risks,id) => {
-                return <TaskRisks key={id} risk={risks} />
-            })}
-        </td>
+            <td>
+                {/* conditional rendering of the  */}
+                {projectRisks.map((risks,id) => {
+                    return <TaskRisks key={id} risk={risks} />
+                })}
+            </td>
 
-        <td style={{textAlign:"center"}}>
-            <span className='projectActions' onClick={editTask} 
-            style={{width:'45%',float:'left',color:'#0500FF',textAlign:"right"}}
-            >
-                Edit
-            </span>
-            {' '}
-            <span className='projectActions' onClick={deleteConfirmation} 
-            style={{width:'45%',float:'right',color:'#0500FF',textAlign:"left"}}
-            >
-                Delete
-            </span>
-        </td>
+            <td style={{textAlign:"center"}}>
+                <span className='projectActions' onClick={editTask} 
+                style={{width:'45%',float:'left',color:'#0500FF',textAlign:"right"}}
+                >
+                    Edit
+                </span>
+                {' '}
+                <span className='projectActions' onClick={deleteConfirmation} 
+                style={{width:'45%',float:'right',color:'#0500FF',textAlign:"left"}}
+                >
+                    Delete
+                </span>
+            </td>   
+        </tr>
 
-         {/* modal for the editing of the list's tasks upon toggle */}
-         <Modal
+        {/* modal for the editing of the list's tasks upon toggle */}
+        <Modal
             centered
             scrollable
             isOpen={tasks.editing}
-          >
+        >
             {console.log(tasks.risk)}
             <ModalHeader>
               Edit To Do List Item
@@ -236,17 +238,18 @@ export default function ProjectTasks({ index, tasks, toggleEditTask,
                 Cancel
               </Button>
             </ModalFooter>
-          </Modal>
+        </Modal>
 
           {/* modal for the confirmation of the deletion of the list contents */}
           <ConfirmationModal
-                openState={wantsToDelete}
-                headerTitle='Task Deletion Confirmation'
-                confirmationAction={deleteTask}
-                confirmationMsgBtnColour="danger"
-                actionMessage='Delete Task'
-                closeModal={deleteConfirmation}
-            />
-    </tr>   
+            openState={wantsToDelete}
+            headerTitle='Task Deletion Confirmation'
+            confirmationAction={deleteTask}
+            confirmationMsgBtnColour="danger"
+            actionMessage='Delete Task'
+            closeModal={deleteConfirmation}
+          />
+    </>
+       
   )
 }

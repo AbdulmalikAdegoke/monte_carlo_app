@@ -30,8 +30,6 @@ export const CustomModal = ({openState,headerTitle,modalBodyContent,confirmation
                     {actionMessage}
                 </Button>
                 {' '}
-                <br />
-                <br />
                 <Button 
                     color="danger" 
                     onClick={closeModal}
